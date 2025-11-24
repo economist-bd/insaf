@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের বিশেষজ্ঞ ডাক্তারগণ | ইনসাফ মেডিকেল</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary-color: #00796b; --accent-color: #ff6b6b; }
+        body { background-color: #f9f9f9; font-family: 'Arial', sans-serif; }
+        
+        /* Navbar */
+        .navbar-brand { color: var(--primary-color) !important; font-weight: bold; }
+        
+        /* Doctor Card */
+        .doctor-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            background: white;
+            height: 100%;
+        }
+        .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .doc-img-container {
+            height: 200px;
+            background-color: #e0f2f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .doc-img { width: 100%; height: 100%; object-fit: cover; }
+        .dept-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .btn-call {
+            background-color: var(--accent-color);
+            color: white;
+            width: 100%;
+            border-radius: 0 0 10px 10px;
+        }
+        .btn-call:hover { background-color: #e55b5b; color: white; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-heartbeat"></i> ইনসাফ মেডিকেল</a>
+            <a href="index.html" class="btn btn-outline-secondary btn-sm ms-auto">হোম পেজে ফিরে যান</a>
+        </div>
+    </nav>
+
+    <div class="bg-dark text-white py-5 text-center" style="background: linear-gradient(rgba(0,121,107,0.9), rgba(0,121,107,0.9));">
+        <div class="container">
+            <h2 class="fw-bold">আমাদের বিশেষজ্ঞ ডাক্তারগণ</h2>
+            <p class="mb-4">দেশসেরা ৫০ জন বিশেষজ্ঞ ডাক্তার এখন আপনার সেবায় নিয়োজিত</p>
+            
+            <div class="d-flex flex-wrap justify-content-center gap-2" id="filterButtons">
+                <button class="btn btn-light text-dark active-filter" onclick="filterDoctors('all')">সব ডাক্তার</button>
+                <button class="btn btn-outline-light" onclick="filterDoctors('Cardiology')">কার্ডিওলজি</button>
+                <button class="btn btn-outline-light" onclick="filterDoctors('Neuroscience')">নিউরোসায়েন্স</button>
+                <button class="btn btn-outline-light" onclick="filterDoctors('Orthopedics')">অর্থোপেডিকস</button>
+                <button class="btn btn-outline-light" onclick="filterDoctors('Gynecology')">গাইনোকোলজি</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row g-4" id="doctorsContainer">
+            </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0 small">&copy; ২০২৫ ইনসাফ মেডিকেল</p>
+    </footer>
+
+    <script>
+        // ৫০ জন ডাক্তারের ডামি ডাটা জেনারেটর
+        const departments = ['Cardiology', 'Neuroscience', 'Orthopedics', 'Gynecology'];
+        const doctors = [];
+
+        // অটোমেটিক ৫০ জন ডাক্তার তৈরি করা হচ্ছে (আপনি চাইলে নাম এডিট করতে পারবেন)
+        for (let i = 1; i <= 50; i++) {
+            const randomDept = departments[Math.floor(Math.random() * departments.length)];
+            doctors.push({
+                id: i,
+                name: `ডাঃরফিক চৌধুরী ${i}`, // উদাহরণ নাম
+                degree: 'MBBS, FCPS, MD (USA)',
+                dept: randomDept,
+                phone: `+৮৮০ ১৭১১-০০${100 + i}`, // ডামি নম্বর
+                image: 'https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg' // ডামি ছবি
+            });
+        }
+
+        // ডাক্তারদের কার্ড তৈরি করার ফাংশন
+        function displayDoctors(data) {
+            const container = document.getElementById('doctorsContainer');
+            container.innerHTML = '';
+
+            data.forEach(doc => {
+                const card = `
+                    <div class="col-md-3 col-sm-6">
+                        <div class="doctor-card text-center">
+                            <div class="doc-img-container">
+                                <img src="${doc.image}" class="doc-img" alt="${doc.name}">
+                            </div>
+                            <div class="p-3">
+                                <span class="dept-badge">${doc.dept}</span>
+                                <h5 class="fw-bold mb-1">${doc.name}</h5>
+                                <p class="text-muted small mb-2">${doc.degree}</p>
+                                <hr class="my-2">
+                                <p class="fw-bold text-success mb-2"><i class="fas fa-phone-alt"></i> ${doc.phone}</p>
+                                <a href="tel:${doc.phone}" class="btn btn-sm btn-call">অ্যাপয়েন্টমেন্ট নিন</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        // ফিল্টার ফাংশন
+        function filterDoctors(category) {
+            if (category === 'all') {
+                displayDoctors(doctors);
+            } else {
+                const filtered = doctors.filter(doc => doc.dept === category);
+                displayDoctors(filtered);
+            }
+        }
+
+        // পেজ লোড হলে URL চেক করবে (হোম পেজ থেকে লিংকে ক্লিক করলে কাজ করার জন্য)
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const deptParam = urlParams.get('dept');
+            
+            if(deptParam) {
+                filterDoctors(deptParam);
+            } else {
+                displayDoctors(doctors);
+            }
+        };
+    </script>
+</body>
+</html>
