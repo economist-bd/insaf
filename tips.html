@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>স্বাস্থ্য টিপস | ইনসাফ মেডিকেল</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00796b;
+            --secondary-color: #f0f8ff;
+            --accent-color: #ff6b6b;
+        }
+        body { font-family: 'Arial', sans-serif; background-color: #f4f7f6; }
+
+        /* Navbar */
+        .navbar-brand { color: var(--primary-color) !important; font-weight: bold; font-size: 24px; }
+
+        /* Header */
+        .tips-header {
+            background: linear-gradient(rgba(0, 121, 107, 0.9), rgba(0, 121, 107, 0.8)), url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        /* Tip Card */
+        .tip-card {
+            background: white;
+            border: none;
+            border-radius: 10px;
+            padding: 25px;
+            height: 100%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--primary-color);
+        }
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .tip-icon {
+            font-size: 30px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .tip-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .tip-text {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+        .tip-number {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 40px;
+            font-weight: bold;
+            color: rgba(0,0,0,0.03);
+        }
+
+        /* Load More Button */
+        #loadMoreBtn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 40px;
+            border-radius: 30px;
+            font-weight: bold;
+            border: none;
+            transition: 0.3s;
+        }
+        #loadMoreBtn:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-heartbeat"></i> ইনসাফ মেডিকেল</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">হোম</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a class="nav-link" href="specialties.html">বিশেষত্ব</a></li>
+                    <li class="nav-item"><a class="nav-link" href="checkup.html">হেলথ চেকআপ</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold active" href="tips.html">হেলথ টিপস</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="tips-header">
+        <div class="container">
+            <h1 class="fw-bold">দৈনন্দিন স্বাস্থ্য টিপস</h1>
+            <p class="lead">সুস্থ থাকার জন্য ছোট ছোট অভ্যাস গড়ে তুলুন</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4" id="tipsContainer">
+                </div>
+
+            <div class="text-center mt-5">
+                <button id="loadMoreBtn" onclick="loadMoreTips()">
+                    <i class="fas fa-sync-alt me-2"></i> আরো টিপস দেখুন
+                </button>
+                <p id="noMoreText" class="text-muted mt-3" style="display: none;">আর কোনো টিপস নেই!</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">&copy; ২০২৫ ইনসাফ মেডিকেল। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // টিপসের ডাটাবেস (JavaScript Array)
+        const allTips = [
+            { title: "পর্যাপ্ত পানি পান করুন", text: "প্রতিদিন অন্তত ৮-১০ গ্লাস পানি পান করুন। এটি শরীরকে হাইড্রেটেড রাখে এবং টক্সিন বের করতে সাহায্য করে।", icon: "fa-tint" },
+            { title: "সকালের নাস্তা বাদ দেবেন না", text: "সকালের নাস্তা দিনের সবচেয়ে গুরুত্বপূর্ণ খাবার। এটি মেটাবলিজম বাড়ায় এবং সারাদিনের শক্তি যোগায়।", icon: "fa-bread-slice" },
+            { title: "পর্যাপ্ত ঘুম নিশ্চিত করুন", text: "সুস্থ শরীরের জন্য প্রতিদিন রাতে ৭-৮ ঘণ্টা ঘুমের প্রয়োজন। এটি মস্তিষ্ক ও শরীরকে রিলাক্স হতে সাহায্য করে।", icon: "fa-bed" },
+            { title: "চিনি ও মিষ্টি কমান", text: "অতিরিক্ত চিনি ডায়াবেটিস এবং হৃদরোগের ঝুঁকি বাড়ায়। ফলের প্রাকৃতিক চিনি খাওয়ার অভ্যাস করুন।", icon: "fa-ice-cream" },
+            { title: "নিয়মিত হাঁটুন", text: "প্রতিদিন অন্তত ৩০ মিনিট দ্রুত হাঁটার অভ্যাস করুন। এটি হার্ট ভালো রাখে এবং ওজন নিয়ন্ত্রণে সাহায্য করে।", icon: "fa-walking" },
+            { title: "সবুজ শাকসবজি খান", text: "প্রতিদিনের খাবারে সবুজ শাকসবজি রাখুন। এতে প্রচুর ভিটামিন, মিনারেল এবং ফাইবার থাকে।", icon: "fa-leaf" },
+            { title: "হাত ধোয়ার অভ্যাস করুন", text: "খাওয়ার আগে এবং টয়লেট ব্যবহারের পরে সাবান দিয়ে ২০ সেকেন্ড ধরে হাত ধুতে হবে।", icon: "fa-hands-wash" },
+            { title: "চোখের যত্ন নিন", text: "দীর্ঘক্ষণ স্ক্রিনের দিকে তাকিয়ে থাকবেন না। প্রতি ২০ মিনিট পর পর ২০ ফুট দূরে তাকিয়ে চোখের বিশ্রাম দিন।", icon: "fa-eye" },
+            { title: "ফাস্টফুড এড়িয়ে চলুন", text: "তেল ও চর্বিযুক্ত ফাস্টফুড লিভার এবং হার্টের ক্ষতি করে। এর বদলে ঘরের তৈরি খাবার খান।", icon: "fa-hamburger" },
+            { title: "মানসিক স্বাস্থ্য গুরুত্বপূর্ণ", text: "শরীর ভালো রাখতে মন ভালো রাখা জরুরি। দুশ্চিন্তা কমান এবং মেডিটেশন বা প্রার্থনা করুন।", icon: "fa-brain" },
+            { title: "ধূমপান ত্যাগ করুন", text: "ধূমপান ফুসফুসের ক্যান্সার ও হৃদরোগের প্রধান কারণ। সুস্থ থাকতে আজই ধূমপান বর্জন করুন।", icon: "fa-ban" },
+            { title: "দাঁতের যত্ন নিন", text: "প্রতিদিন দুইবার (সকালে ও রাতে) ব্রাশ করুন এবং বছরে একবার ডেন্টিস্টের পরামর্শ নিন।", icon: "fa-tooth" },
+            { title: "লবণ কম খান", text: "অতিরিক্ত লবণ উচ্চ রক্তচাপের কারণ হতে পারে। কাঁচা লবণ খাওয়া থেকে বিরত থাকুন।", icon: "fa-cubes" },
+            { title: "সূর্যের আলো গ্রহণ করুন", text: "সকাল ১০টা থেকে ১১টার মধ্যে ১০-১৫ মিনিট রোদে থাকুন। এটি ভিটামিন ডি-এর ভালো উৎস।", icon: "fa-sun" },
+            { title: "ফাইবার যুক্ত খাবার খান", text: "লাল চাল, ওটস এবং খোসাসহ ফলে প্রচুর ফাইবার থাকে যা হজমশক্তি বৃদ্ধি করে।", icon: "fa-seedling" },
+            { title: "ওজন নিয়ন্ত্রণে রাখুন", text: "অতিরিক্ত ওজন বিভিন্ন রোগের কারণ। বিএমআই (BMI) অনুযায়ী নিজের ওজন ঠিক রাখুন।", icon: "fa-weight" },
+            { title: "চা/কফি পরিমিত খান", text: "অতিরিক্ত ক্যাফেইন স্বাস্থ্যের জন্য ক্ষতিকর। দিনে ২ কাপের বেশি চা বা কফি না খাওয়াই ভালো।", icon: "fa-mug-hot" },
+            { title: "নিয়মিত চেকআপ করান", text: "রোগ হওয়ার পর চিকিৎসার চেয়ে রোগ প্রতিরোধ করা ভালো। বছরে একবার ফুল বডি চেকআপ করান।", icon: "fa-stethoscope" },
+            { title: "সোজা হয়ে বসুন", text: "বসার সময় মেরুদণ্ড সোজা রাখুন। এতে ব্যাক পেইন বা কোমরের ব্যথা থেকে মুক্তি পাওয়া যায়।", icon: "fa-chair" },
+            { title: "ইতিবাচক চিন্তা করুন", text: "ইতিবাচক চিন্তা রোগ প্রতিরোধ ক্ষমতা বাড়ায় এবং মানসিক প্রশান্তি দেয়।", icon: "fa-smile" },
+            
+            // --- এখান থেকে লোড মোর বাটনে ক্লিক করলে দেখাবে ---
+            
+            { title: "বাদাম খাওয়ার অভ্যাস", text: "প্রতিদিন এক মুঠো বাদাম খান। এতে ভালো ফ্যাট থাকে যা হার্টের জন্য উপকারী।", icon: "fa-heart" },
+            { title: "ঠান্ডা পানীয় বর্জন", text: "খাবারের সাথে সাথে অতিরিক্ত ঠান্ডা পানি বা সফট ড্রিংকস পান করা হজমে ব্যাঘাত ঘটায়।", icon: "fa-glass-whiskey" },
+            { title: "ইলেকট্রনিক্স দূরে রাখুন", text: "ঘুমানোর অন্তত ১ ঘণ্টা আগে মোবাইল বা ল্যাপটপ ব্যবহার বন্ধ করুন।", icon: "fa-mobile-alt" },
+            { title: "ভিটামিন সি গ্রহণ", text: "লেবু, কমলা ও আমলকি খান। ভিটামিন সি রোগ প্রতিরোধ ক্ষমতা বৃদ্ধি করে।", icon: "fa-lemon" },
+            { title: "পর্যাপ্ত প্রোটিন খান", text: "মাছ, মাংস, ডিম বা ডাল প্রতিদিনের খাবারে রাখুন। এটি শরীরের কোষ গঠনে সাহায্য করে।", icon: "fa-egg" },
+            { title: "ধীরে ধীরে খান", text: "খাবার ভালো করে চিবিয়ে এবং ধীরে ধীরে খান। এতে হজম ভালো হয় এবং অতিরিক্ত খাওয়া হয় না।", icon: "fa-utensils" },
+            { title: "সিঁড়ি ব্যবহার করুন", text: "লিফটের বদলে সিঁড়ি ব্যবহার করা একটি ভালো ব্যায়াম। এটি হার্ট ও পা ভালো রাখে।", icon: "fa-running" },
+            { title: "মেকআপ পরিষ্কার করুন", text: "ঘুমানোর আগে অবশ্যই মেকআপ এবং মুখের ত্বক পরিষ্কার করুন।", icon: "fa-magic" },
+            { title: "হাঁচি-কাশিতে রুমাল", text: "হাঁচি বা কাশির সময় মুখে রুমাল বা টিস্যু ব্যবহার করুন জীবাণু ছড়ানো রোধ করতে।", icon: "fa-head-side-mask" },
+            { title: "সোডা বা এনার্জি ড্রিংক না", text: "এগুলোতে প্রচুর চিনি এবং কেমিক্যাল থাকে যা কিডনির ক্ষতি করতে পারে।", icon: "fa-wine-bottle" },
+            { title: "দুধ বা দই খান", text: "হাড় মজবুত রাখতে ক্যালসিয়াম সমৃদ্ধ খাবার যেমন দুধ বা দই খাওয়া জরুরি।", icon: "fa-cheese" },
+            { title: "ঘাম ঝরান", text: "সপ্তাহে অন্তত ৩-৪ দিন এমন ব্যায়াম করুন যাতে শরীর থেকে ঘাম ঝরে।", icon: "fa-dumbbell" },
+            { title: "বই পড়ার অভ্যাস", text: "বই পড়া মস্তিষ্কের কার্যক্ষমতা বাড়ায় এবং মানসিক চাপ কমায়।", icon: "fa-book" },
+            { title: "পারিবারিক সময়", text: "পরিবারের সাথে সময় কাটানো মানসিক স্বাস্থ্যের জন্য অত্যন্ত উপকারী।", icon: "fa-users" },
+            { title: "কানে হেডফোন কম", text: "উচ্চ শব্দে হেডফোন ব্যবহার কানের ক্ষতি করে। ভলিউম ৬০% এর নিচে রাখুন।", icon: "fa-headphones" },
+            { title: "বাগান করা", text: "বাগান করা বা প্রকৃতির সাথে সময় কাটানো মনকে সতেজ রাখে।", icon: "fa-tree" },
+            { title: "পর্যাপ্ত বিশ্রাম", text: "কাজের ফাঁকে ফাঁকে ৫ মিনিটের বিশ্রাম নিন। এতে কাজের গতি বাড়ে।", icon: "fa-hourglass-half" },
+            { title: "তেল পরিবর্তন", text: "রান্নায় একই তেল বারবার ব্যবহার করবেন না। এটি ক্যান্সারের ঝুঁকি বাড়ায়।", icon: "fa-oil-can" },
+            { title: "নিঃশ্বাস ব্যায়াম", text: "গভীর শ্বাস-প্রশ্বাসের ব্যায়াম ফুসফুসকে শক্তিশালী করে এবং স্ট্রেস কমায়।", icon: "fa-lungs" },
+            { title: "কৃতজ্ঞ থাকুন", text: "জীবনের ছোট ছোট অর্জনের জন্য কৃতজ্ঞ থাকুন, এটি মানসিক প্রশান্তি দেয়।", icon: "fa-pray" }
+        ];
+
+        let loadedCount = 0;
+        const itemsPerLoad = 20;
+
+        function renderTips(startIndex, endIndex) {
+            const container = document.getElementById('tipsContainer');
+            const tipsToRender = allTips.slice(startIndex, endIndex);
+
+            tipsToRender.forEach((tip, index) => {
+                const globalIndex = startIndex + index + 1;
+                const tipHTML = `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="tip-card">
+                            <span class="tip-number">${globalIndex}</span>
+                            <div class="text-center">
+                                <i class="fas ${tip.icon} tip-icon"></i>
+                                <div class="tip-title">${tip.title}</div>
+                            </div>
+                            <p class="tip-text">${tip.text}</p>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += tipHTML;
+            });
+
+            loadedCount += tipsToRender.length;
+
+            // যদি সব টিপস লোড হয়ে যায়, বাটন লুকিয়ে ফেলা হবে
+            if (loadedCount >= allTips.length) {
+                document.getElementById('loadMoreBtn').style.display = 'none';
+                document.getElementById('noMoreText').style.display = 'block';
+            }
+        }
+
+        function loadMoreTips() {
+            renderTips(loadedCount, loadedCount + itemsPerLoad);
+        }
+
+        // পেজ লোড হলে প্রথম ২০টি দেখাবে
+        window.onload = function() {
+            renderTips(0, itemsPerLoad);
+        };
+    </script>
+</body>
+</html>
