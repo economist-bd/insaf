@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ক্যারিয়ার | ইনসাফ মেডিকেল</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00796b;
+            --secondary-color: #f0f8ff;
+            --accent-color: #ff6b6b;
+        }
+        body { font-family: 'Arial', sans-serif; background-color: #f4f7f6; }
+
+        /* Navbar */
+        .navbar-brand { color: var(--primary-color) !important; font-weight: bold; font-size: 24px; }
+
+        /* Hero Header */
+        .career-header {
+            background: linear-gradient(rgba(0, 121, 107, 0.9), rgba(0, 121, 107, 0.8)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        /* Job Card Styling */
+        .job-card {
+            background: white;
+            border: none;
+            border-left: 5px solid var(--primary-color);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .job-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .job-title { font-weight: bold; color: #333; font-size: 20px; }
+        .job-meta { color: #666; font-size: 14px; margin: 10px 0; }
+        .job-meta i { color: var(--accent-color); margin-right: 5px; }
+        
+        /* Benefit Section */
+        .benefit-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-heartbeat"></i> ইনসাফ মেডিকেল</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">হোম</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a class="nav-link" href="specialties.html">বিশেষত্ব</a></li>
+                    <li class="nav-item"><a class="nav-link" href="checkup.html">হেলথ চেকআপ</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="career.html">ক্যারিয়ার</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="career-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold">আমাদের টিমে যোগ দিন</h1>
+            <p class="lead">আপনার ক্যারিয়ার গড়ুন দেশের অন্যতম সেরা স্বাস্থ্যসেবা প্রতিষ্ঠানে</p>
+        </div>
+    </header>
+
+    <section class="py-5 bg-white">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-5" style="color: var(--primary-color);">কেন ইনসাফ মেডিকেলে কাজ করবেন?</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-user-md benefit-icon"></i>
+                    <h5>পেশাদার পরিবেশ</h5>
+                    <p class="text-muted">আমরা নিশ্চিত করি একটি সুন্দর ও শিক্ষণীয় কাজের পরিবেশ।</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-chart-line benefit-icon"></i>
+                    <h5>ক্যারিয়ার গ্রোথ</h5>
+                    <p class="text-muted">নিয়মিত ট্রেনিং এবং প্রমোশনের মাধ্যমে আপনার দক্ষতা বৃদ্ধি।</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-hand-holding-usd benefit-icon"></i>
+                    <h5>আকর্ষণীয় সুযোগ-সুবিধা</h5>
+                    <p class="text-muted">প্রতিযোগিতামূলক বেতন, বোনাস এবং হেলথ ইন্স্যুরেন্স সুবিধা।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h3 class="fw-bold mb-4 border-bottom pb-2">চলমান নিয়োগ বিজ্ঞপ্তি (Job Openings)</h3>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="job-card">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="job-title">মেডিকেল অফিসার (Medical Officer)</div>
+                                <div class="job-meta">
+                                    <span class="me-3"><i class="fas fa-briefcase"></i> ফুল টাইম</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> ঢাকা</span>
+                                </div>
+                                <p class="small text-muted mt-2">যোগ্যতা: MBBS পাশ এবং বিএমডিসি রেজিস্ট্রেশন থাকতে হবে। ১ বছরের অভিজ্ঞতা অগ্রাধিকার।</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#applyModal" onclick="setJobTitle('Medical Officer')">আবেদন করুন</button>
+                        </div>
+                        <div class="text-end mt-2">
+                            <small class="text-danger">আবেদনের শেষ তারিখ: ৩০ নভেম্বর, ২০২৫</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="job-card">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="job-title">সিনিয়র স্টাফ নার্স</div>
+                                <div class="job-meta">
+                                    <span class="me-3"><i class="fas fa-briefcase"></i> শিফটিং ডিউটি</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> ঢাকা</span>
+                                </div>
+                                <p class="small text-muted mt-2">যোগ্যতা: ডিপ্লোমা ইন নার্সিং / বিএসসি। আইসিইউ অভিজ্ঞতা সম্পন্নদের অগ্রাধিকার।</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#applyModal" onclick="setJobTitle('Senior Nurse')">আবেদন করুন</button>
+                        </div>
+                        <div class="text-end mt-2">
+                            <small class="text-danger">আবেদনের শেষ তারিখ: ২৫ নভেম্বর, ২০২৫</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="job-card">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="job-title">কাস্টমার কেয়ার এক্সিকিউটিভ</div>
+                                <div class="job-meta">
+                                    <span class="me-3"><i class="fas fa-briefcase"></i> ফুল টাইম</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> ফ্রন্ট ডেস্ক</span>
+                                </div>
+                                <p class="small text-muted mt-2">যোগ্যতা: স্নাতক পাশ। সুন্দর বাচনভঙ্গি এবং কম্পিউটার জানা আবশ্যক।</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#applyModal" onclick="setJobTitle('Customer Care')">আবেদন করুন</button>
+                        </div>
+                        <div class="text-end mt-2">
+                            <small class="text-danger">আবেদনের শেষ তারিখ: ০৫ ডিসেম্বর, ২০২৫</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="job-card">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="job-title">আইটি সাপোর্ট অফিসার</div>
+                                <div class="job-meta">
+                                    <span class="me-3"><i class="fas fa-briefcase"></i> ফুল টাইম</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> আইটি বিভাগ</span>
+                                </div>
+                                <p class="small text-muted mt-2">যোগ্যতা: ডিপ্লোমা/বিএসসি ইন সিএসই। নেটওয়ার্কিং ও হার্ডওয়্যার সম্পর্কে ধারণা।</p>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#applyModal" onclick="setJobTitle('IT Officer')">আবেদন করুন</button>
+                        </div>
+                        <div class="text-end mt-2">
+                            <small class="text-danger">আবেদনের শেষ তারিখ: ১০ ডিসেম্বর, ২০২৫</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="applyModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title">চাকরির আবেদন ফরম</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="https://formspree.io/f/mkgklkga" method="POST">
+                        <input type="hidden" id="positionInput" name="Applied_Position">
+                        
+                        <div class="mb-3">
+                            <label class="form-label">আপনার নাম</label>
+                            <input type="text" name="name" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">মোবাইল নম্বর</label>
+                            <input type="text" name="phone" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">ইমেইল</label>
+                            <input type="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">সিভি লিংক (Google Drive/LinkedIn)</label>
+                            <input type="url" name="cv_link" class="form-control" placeholder="https://..." required>
+                            <small class="text-muted">আপনার সিভির গুগল ড্রাইভ লিংক দিন।</small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">কিছু বলতে চান?</label>
+                            <textarea name="message" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100" style="background-color: var(--primary-color);">আবেদন জমা দিন</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">&copy; ২০২৫ ইনসাফ মেডিকেল। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // যে চাকরিতে ক্লিক করবে, সেই পদের নাম ফর্মে অটোমেটিক সেট হবে
+        function setJobTitle(title) {
+            document.getElementById('positionInput').value = title;
+        }
+    </script>
+</body>
+</html>
