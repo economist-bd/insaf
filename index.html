@@ -1,0 +1,273 @@
+আপনার দেওয়া Formspree ID (mkgklkga) যুক্ত করে সম্পূর্ণ index.html কোডটি নিচে দেওয়া হলো।
+এই পুরো কোডটি কপি করে আপনার index.html ফাইলে সেভ করুন এবং গিটহাবে আপলোড করুন। এখন কেউ ফর্ম ফিলাপ করলে ডাটা সরাসরি আপনার ইমেইলে চলে যাবে।
+আপডেটেড কোড (GitHub Ready)
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইনসাফ মেডিকেল | সুচিকিৎসার অঙ্গীকার</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00796b; /* Medical Green */
+            --secondary-color: #f0f8ff;
+            --accent-color: #ff6b6b;
+        }
+        body {
+            font-family: 'Kalpurush', 'Arial', sans-serif;
+        }
+        /* Top Bar */
+        .top-bar {
+            background-color: #f8f9fa;
+            font-size: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        /* Navbar */
+        .navbar-brand {
+            font-weight: bold;
+            color: var(--primary-color) !important;
+            font-size: 24px;
+        }
+        .nav-link {
+            color: #333 !important;
+            font-weight: 500;
+        }
+        .btn-appointment {
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 20px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 600px; /* উচ্চতা একটু বাড়ানো হয়েছে */
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 60, 50, 0.7);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+        
+        /* Booking Form Card */
+        .booking-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .booking-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Features Icon Box */
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+        .feature-box:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0 20px 0;
+        }
+        footer a {
+            color: #bdc3c7;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <span><i class="fas fa-phone-alt"></i> জরুরি সেবা: ১০৬৭৮</span>
+            <div>
+                <a href="#" class="text-dark me-3 text-decoration-none">ক্যারিয়ার</a>
+                <a href="#" class="text-dark text-decoration-none">যোগাযোগ</a>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-heartbeat"></i> ইনসাফ মেডিকেল</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">ডাক্তার খুঁজুন</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">বিশেষত্ব</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">হেলথ চেকআপ</a></li>
+                    <li class="nav-item ms-3">
+                        <a href="#" class="btn btn-appointment px-4">অ্যাপয়েন্টমেন্ট নিন</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-md-7">
+                    <h1 class="display-4 fw-bold">আপনার স্বাস্থ্য, আমাদের দায়িত্ব</h1>
+                    <p class="lead">ইনসাফ মেডিকেল - যেখানে অত্যাধুনিক প্রযুক্তি এবং অভিজ্ঞ ডাক্তারদের সমন্বয়ে নিশ্চিত করা হয় বিশ্বমানের চিকিৎসা সেবা।</p>
+                    <button class="btn btn-light btn-lg mt-3 text-success fw-bold">আরও জানুন</button>
+                </div>
+                <div class="col-md-5">
+                    <div class="booking-card mt-4 mt-md-0">
+                        <h4>দ্রুত অ্যাপয়েন্টমেন্ট বুক করুন</h4>
+                        
+                        <form action="https://formspree.io/f/mkgklkga" method="POST">
+                            <div class="mb-3">
+                                <input type="text" name="patient_name" class="form-control" placeholder="রোগীর নাম" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" name="phone" class="form-control" placeholder="মোবাইল নম্বর" required>
+                            </div>
+                            <div class="mb-3">
+                                <select name="department" class="form-select" required>
+                                    <option value="" selected>বিভাগ নির্বাচন করুন</option>
+                                    <option value="Cardiology">কার্ডিওলজি</option>
+                                    <option value="Neuroscience">নিউরোসায়েন্স</option>
+                                    <option value="Orthopedics">অর্থোপেডিকস</option>
+                                    <option value="Gynecology">গাইনোকোলজি</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" style="background-color: var(--primary-color);">সাবমিট করুন</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold" style="color: var(--primary-color);">আমাদের বিশেষায়িত সেবাসমূহ</h2>
+                <p class="text-muted">আমরা প্রদান করছি ২৪/৭ বিশেষায়িত চিকিৎসা সেবা</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="feature-box bg-white">
+                        <i class="fas fa-heartbeat feature-icon"></i>
+                        <h5>কার্ডিওলজি</h5>
+                        <p class="small text-muted">হৃদরোগের উন্নত চিকিৎসা</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feature-box bg-white">
+                        <i class="fas fa-brain feature-icon"></i>
+                        <h5>নিউরোলজি</h5>
+                        <p class="small text-muted">মস্তিষ্ক ও স্নায়ু রোগ</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feature-box bg-white">
+                        <i class="fas fa-baby feature-icon"></i>
+                        <h5>পেডিয়াট্রিক্স</h5>
+                        <p class="small text-muted">শিশুরোগ বিশেষজ্ঞ</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="feature-box bg-white">
+                        <i class="fas fa-bone feature-icon"></i>
+                        <h5>অর্থোপেডিকস</h5>
+                        <p class="small text-muted">হাড় ও জয়েন্ট কেয়ার</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 text-white" style="background-color: var(--primary-color);">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-3">
+                    <h2 class="fw-bold">৫০+</h2>
+                    <p>অভিজ্ঞ ডাক্তার</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h2 class="fw-bold">২০০+</h2>
+                    <p>বেড ক্যাপাসিটি</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h2 class="fw-bold">২৪/৭</h2>
+                    <p>ইমার্জেন্সি সেবা</p>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h2 class="fw-bold">১০,০০০+</h2>
+                    <p>সুস্থ রোগী</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">ইনসাফ মেডিকেল</h5>
+                    <p class="small">আমরা আধুনিক প্রযুক্তির সাথে মানবিক সেবার সমন্বয় ঘটাতে প্রতিশ্রুতিবদ্ধ। আপনার সুস্থতাই আমাদের প্রধান লক্ষ্য।</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">দ্রুত লিঙ্ক</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">ডাক্তার অ্যাপয়েন্টমেন্ট</a></li>
+                        <li><a href="#">ল্যাব রিপোর্ট</a></li>
+                        <li><a href="#">স্বাস্থ্য টিপস</a></li>
+                        <li><a href="#">যোগাযোগ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">যোগাযোগ</h5>
+                    <p class="small"><i class="fas fa-map-marker-alt me-2"></i> ধানমন্ডি, ঢাকা-১২০৯</p>
+                    <p class="small"><i class="fas fa-phone me-2"></i> +৮৮০ ১৭১১-০০০০০০</p>
+                    <p class="small"><i class="fas fa-envelope me-2"></i> info@insafmedical.com</p>
+                </div>
+            </div>
+            <div class="text-center pt-4 border-top border-secondary">
+                <p class="small mb-0">&copy; ২০২৫ ইনসাফ মেডিকেল। সর্বস্বত্ব সংরক্ষিত।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
