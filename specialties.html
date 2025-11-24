@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের সেবাসমূহ (Specialties) | ইনসাফ মেডিকেল</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00796b;
+            --accent-color: #ff6b6b;
+            --light-bg: #f4f7f6;
+        }
+        body { font-family: 'Arial', sans-serif; background-color: var(--light-bg); }
+        
+        /* Navbar */
+        .navbar-brand { color: var(--primary-color) !important; font-weight: bold; font-size: 24px; }
+        
+        /* Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 50, 40, 0.8), rgba(0, 50, 40, 0.8)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        /* Specialty Card */
+        .specialty-card {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .specialty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+        
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(0, 121, 107, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .icon-box i {
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+        
+        .service-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .service-list li {
+            margin-bottom: 8px;
+        }
+        .service-list li i {
+            color: var(--accent-color);
+            margin-right: 8px;
+        }
+
+        .btn-view-doctors {
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 20px;
+            padding: 8px 25px;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn-view-doctors:hover {
+            background-color: #005a4f;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-heartbeat"></i> ইনসাফ মেডিকেল</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">হোম</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="specialties.html">বিশেষত্ব</a></li>
+                    <li class="nav-item"><a class="nav-link" href="doctors.html">ডাক্তার খুঁজুন</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="fw-bold">বিশেষায়িত চিকিৎসাসমূহ (Centers of Excellence)</h1>
+            <p class="lead mb-0">আমরা দিচ্ছি আন্তর্জাতিক মানের বিশেষায়িত চিকিৎসা সেবা</p>
+        </div>
+    </div>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card">
+                        <div class="icon-box"><i class="fas fa-heartbeat"></i></div>
+                        <h3>কার্ডিওলজি (হৃদরোগ)</h3>
+                        <p class="text-muted small">হৃদরোগের সম্পূর্ণ যত্ন এবং হার্ট সার্জারির জন্য আমাদের রয়েছে অত্যাধুনিক ইউনিট।</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> এনজিওগ্রাম ও এনজিওপ্লাস্টি</li>
+                            <li><i class="fas fa-check"></i> ২৪/৭ কার্ডিয়াক ইমার্জেন্সি</li>
+                            <li><i class="fas fa-check"></i> বাইপাস সার্জারি</li>
+                        </ul>
+                        <a href="doctors.html?dept=Cardiology" class="btn-view-doctors">ডাক্তার দেখুন <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card">
+                        <div class="icon-box"><i class="fas fa-brain"></i></div>
+                        <h3>নিউরোসায়েন্স (মস্তিষ্ক)</h3>
+                        <p class="text-muted small">স্ট্রোক এবং স্নায়বিক রোগের জটিল চিকিৎসায় আমরা ব্যবহার করছি সর্বাধুনিক প্রযুক্তি।</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> ব্রেন টিউমার সার্জারি</li>
+                            <li><i class="fas fa-check"></i> স্ট্রোক ম্যানেজমেন্ট ইউনিট</li>
+                            <li><i class="fas fa-check"></i> স্পাইনাল কর্ড সার্জারি</li>
+                        </ul>
+                        <a href="doctors.html?dept=Neuroscience" class="btn-view-doctors">ডাক্তার দেখুন <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card">
+                        <div class="icon-box"><i class="fas fa-bone"></i></div>
+                        <h3>অর্থোপেডিকস (হাড় ও জয়েন্ট)</h3>
+                        <p class="text-muted small">হাড় ভাঙা, জয়েন্ট পেইন এবং ট্রমা চিকিৎসায় অভিজ্ঞ সার্জন দ্বারা সেবা প্রদান।</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> জয়েন্ট রিপ্লেসমেন্ট</li>
+                            <li><i class="fas fa-check"></i> আর্থ্রোস্কোপিক সার্জারি</li>
+                            <li><i class="fas fa-check"></i> স্পোর্টস ইনজুরি চিকিৎসা</li>
+                        </ul>
+                        <a href="doctors.html?dept=Orthopedics" class="btn-view-doctors">ডাক্তার দেখুন <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card">
+                        <div class="icon-box"><i class="fas fa-baby"></i></div>
+                        <h3>গাইনোকোলজি (মা ও শিশু)</h3>
+                        <p class="text-muted small">প্রসূতি মা ও নবজাতকের নিবিড় যত্ন এবং সব ধরনের গাইনোকোলজিক্যাল চিকিৎসা।</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> নরমাল ও সিজারিয়ান ডেলিভারি</li>
+                            <li><i class="fas fa-check"></i> ল্যাপারোস্কোপিক সার্জারি</li>
+                            <li><i class="fas fa-check"></i> বন্ধ্যাত্ব চিকিৎসা</li>
+                        </ul>
+                        <a href="doctors.html?dept=Gynecology" class="btn-view-doctors">ডাক্তার দেখুন <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card">
+                        <div class="icon-box"><i class="fas fa-user-md"></i></div>
+                        <h3>জেনারেল মেডিসিন</h3>
+                        <p class="text-muted small">জ্বর, ডায়াবেটিস, প্রেসার সহ সব ধরণের সাধারণ রোগের সুচিকিৎসা।</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> ডায়াবেটিস নিয়ন্ত্রণ</li>
+                            <li><i class="fas fa-check"></i> সংক্রামক রোগ চিকিৎসা</li>
+                            <li><i class="fas fa-check"></i> ফুল বডি চেকআপ</li>
+                        </ul>
+                        <a href="doctors.html" class="btn-view-doctors">ডাক্তার দেখুন <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="specialty-card" style="background-color: #e0f2f1;">
+                        <div class="icon-box"><i class="fas fa-ambulance"></i></div>
+                        <h3>জরুরি সেবা ও ডায়াগনস্টিক</h3>
+                        <p class="text-muted small">রোগ নির্ণয়ের জন্য আমাদের আছে অত্যাধুনিক ল্যাব এবং ২৪ ঘণ্টা অ্যাম্বুলেন্স।</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> ২৪/৭ প্যাথলজি ল্যাব</li>
+                            <li><i class="fas fa-check"></i> ডিজিটাল এক্স-রে ও এমআরআই</li>
+                            <li><i class="fas fa-check"></i> আইসিইউ অ্যাম্বুলেন্স</li>
+                        </ul>
+                        <a href="index.html" class="btn-view-doctors">বুকিং দিন <i class="fas fa-arrow-right ms-1"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">&copy; ২০২৫ ইনসাফ মেডিকেল। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
