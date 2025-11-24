@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>স্বাস্থ্য টিপস | ইনসাফ মেডিকেল</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00796b;
+            --secondary-color: #f0f8ff;
+            --accent-color: #ff6b6b;
+        }
+        body { font-family: 'Arial', sans-serif; background-color: #f4f7f6; }
+
+        /* Navbar */
+        .navbar-brand { color: var(--primary-color) !important; font-weight: bold; font-size: 24px; }
+
+        /* Header */
+        .tips-header {
+            background: linear-gradient(rgba(0, 121, 107, 0.9), rgba(0, 121, 107, 0.8)), url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        /* Tip Card Design */
+        .tip-card {
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 25px;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            border-top: 5px solid var(--primary-color);
+        }
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+        }
+        
+        /* Icon Styling */
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 121, 107, 0.1);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .tip-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        .tip-text {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* Share Button */
+        .btn-share {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #aaa;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+        .btn-share:hover {
+            color: var(--accent-color);
+        }
+
+        /* Pagination Buttons */
+        .pagination-area {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn-nav-tips {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            border: none;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .btn-nav-tips:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .btn-nav-tips:hover:not(:disabled) {
+            background-color: #004d40;
+            transform: scale(1.05);
+        }
+
+        /* Page Count Badge */
+        .page-badge {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="fas fa-heartbeat"></i> ইনসাফ মেডিকেল</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">হোম</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">আমাদের সম্পর্কে</a></li>
+                    <li class="nav-item"><a class="nav-link" href="specialties.html">বিশেষত্ব</a></li>
+                    <li class="nav-item"><a class="nav-link" href="checkup.html">হেলথ চেকআপ</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold active" href="tips.html">হেলথ টিপস</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="tips-header">
+        <div class="container">
+            <h1 class="fw-bold">দৈনন্দিন স্বাস্থ্য টিপস</h1>
+            <p class="lead">সুস্থ থাকার জন্য ছোট ছোট অভ্যাস গড়ে তুলুন</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            
+            <div class="row g-4" id="tipsContainer">
+                </div>
+
+            <div class="pagination-area">
+                <button id="prevBtn" class="btn-nav-tips" onclick="changePage(-1)" disabled>
+                    <i class="fas fa-arrow-left me-2"></i> পূর্বের টিপস
+                </button>
+                
+                <div class="page-badge">
+                    পৃষ্ঠা <span id="currentPageNum" class="ms-1 me-1">1</span> / <span id="totalPagesNum">3</span>
+                </div>
+
+                <button id="nextBtn" class="btn-nav-tips" onclick="changePage(1)">
+                    পরবর্তী টিপস <i class="fas fa-arrow-right ms-2"></i>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">&copy; ২০২৫ ইনসাফ মেডিকেল। সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // টিপসের বিশাল ডাটাবেস (৬০টি টিপস ৩টি পেজের জন্য)
+        // প্রতি পেজে ২০টি করে দেখাবে
+        const tipsData = [
+            // Page 1 (1-20)
+            { id: 1, title: "সকালে লেবু পানি", text: "সকালে খালি পেটে কুসুম গরম পানিতে লেবু চিপে পান করলে হজমশক্তি বাড়ে এবং মেদ কমে।", icon: "fa-lemon" },
+            { id: 2, title: "পর্যাপ্ত ঘুম", text: "প্রতিদিন রাতে অন্তত ৭-৮ ঘণ্টা ঘুমানো জরুরি। এটি মস্তিষ্ক ও শরীরকে রিলাক্স করে।", icon: "fa-bed" },
+            { id: 3, title: "চিনি বর্জন", text: "চিনি শরীরের জন্য ক্ষতিকর। অতিরিক্ত চিনি ডায়াবেটিস ও হৃদরোগের ঝুঁকি বাড়ায়।", icon: "fa-cube" },
+            { id: 4, title: "হাঁটার অভ্যাস", text: "প্রতিদিন অন্তত ৩০ মিনিট দ্রুত হাঁটুন। এটি হার্ট ভালো রাখে।", icon: "fa-walking" },
+            { id: 5, title: "পানি পান", text: "দৈনিক অন্তত ৩-৪ লিটার পানি পান করুন। ডিহাইড্রেশন অনেক রোগের কারণ।", icon: "fa-tint" },
+            { id: 6, title: "সবুজ শাকসবজি", text: "খাবারে প্রচুর সবুজ শাকসবজি রাখুন। এতে ভিটামিন ও আয়রন থাকে।", icon: "fa-leaf" },
+            { id: 7, title: "চোখের বিশ্রাম", text: "কম্পিউটারে কাজের সময় ২০ মিনিট পর পর ২০ সেকেন্ডের জন্য দূরে তাকান।", icon: "fa-eye" },
+            { id: 8, title: "হাত ধোয়া", text: "খাবার খাওয়ার আগে ও পরে ২০ সেকেন্ড ধরে সাবান দিয়ে হাত ধুবেন।", icon: "fa-hands-wash" },
+            { id: 9, title: "ধূমপান ত্যাগ", text: "সুস্থ ফুসফুসের জন্য আজই ধূমপান ও তামাকজাত দ্রব্য বর্জন করুন।", icon: "fa-ban" },
+            { id: 10, title: "দাঁতের যত্ন", text: "দিনে দুবার ব্রাশ করুন এবং প্রতি ৬ মাসে একবার ডেন্টিস্ট দেখান।", icon: "fa-tooth" },
+            { id: 11, title: "ফাস্টফুড বর্জন", text: "বাইরের তেলযুক্ত ও ভাজাপোড়া খাবার লিভারের ক্ষতি করে।", icon: "fa-hamburger" },
+            { id: 12, title: "লবণ কম খান", text: "অতিরিক্ত লবণ উচ্চ রক্তচাপের কারণ। কাঁচা লবণ খাওয়া বাদ দিন।", icon: "fa-shaker" },
+            { id: 13, title: "মানসিক শান্তি", text: "দুশ্চিন্তা কমানোর জন্য মেডিটেশন বা প্রার্থনা করুন।", icon: "fa-brain" },
+            { id: 14, title: "সূর্যের আলো", text: "সকাল ১০-১১টার রোদ গায়ে মাখুন, এটি ভিটামিন ডি এর উৎস।", icon: "fa-sun" },
+            { id: 15, title: "সোজা বসা", text: "বসার সময় মেরুদণ্ড সোজা রাখুন, ব্যাকপেইন থেকে মুক্তি পাবেন।", icon: "fa-chair" },
+            { id: 16, title: "ফলের রস", text: "প্যাকেটের জুসের বদলে তাজা ফলের রস খাওয়ার অভ্যাস করুন।", icon: "fa-wine-glass" },
+            { id: 17, title: "ওজন নিয়ন্ত্রণ", text: "বিএমআই (BMI) অনুযায়ী নিজের ওজন নিয়ন্ত্রণে রাখুন।", icon: "fa-weight" },
+            { id: 18, title: "ঘাম ঝরানো", text: "সপ্তাহে ৩-৪ দিন ব্যায়াম করে শরীর থেকে ঘাম ঝরান।", icon: "fa-running" },
+            { id: 19, title: "চা/কফি", text: "দিনে ২ কাপের বেশি চা বা কফি খাবেন না।", icon: "fa-mug-hot" },
+            { id: 20, title: "নখ ছোট রাখা", text: "বড় নখে জীবাণু থাকে। নিয়মিত নখ কেটে পরিষ্কার রাখুন।", icon: "fa-hand-paper" },
+
+            // Page 2 (21-40)
+            { id: 21, title: "বাদাম খাওয়া", text: "প্রতিদিন এক মুঠো বাদাম হার্টের জন্য খুব উপকারী।", icon: "fa-heart" },
+            { id: 22, title: "ঠান্ডা পানি না", text: "খাবারের মাঝখানে অতিরিক্ত ঠান্ডা পানি হজমে ব্যাঘাত ঘটায়।", icon: "fa-glass-whiskey" },
+            { id: 23, title: "মোবাইল আসক্তি", text: "ঘুমানোর ১ ঘণ্টা আগে মোবাইল স্ক্রিন থেকে দূরে থাকুন।", icon: "fa-mobile-alt" },
+            { id: 24, title: "ভিটামিন সি", text: "লেবু, আমলকি ও টক ফল রোগ প্রতিরোধ ক্ষমতা বাড়ায়।", icon: "fa-lemon" },
+            { id: 25, title: "প্রোটিন", text: "ডিম, মাছ বা ডাল প্রতিদিনের খাবারে রাখুন।", icon: "fa-egg" },
+            { id: 26, title: "ধীরে খাওয়া", text: "খাবার ভালো করে চিবিয়ে ও ধীরে ধীরে খান।", icon: "fa-utensils" },
+            { id: 27, title: "সিঁড়ি ব্যবহার", text: "লিফটের বদলে সিঁড়ি ব্যবহার হার্টের জন্য ভালো ব্যায়াম।", icon: "fa-sort-amount-up" },
+            { id: 28, title: "ত্বকের যত্ন", text: "রাতে ঘুমানোর আগে মুখ ধুয়ে ময়েশ্চারাইজার লাগান।", icon: "fa-magic" },
+            { id: 29, title: "হাঁচি শিষ্টাচার", text: "হাঁচি বা কাশির সময় রুমাল ব্যবহার করুন।", icon: "fa-head-side-mask" },
+            { id: 30, title: "এনার্জি ড্রিংক না", text: "এনার্জি ড্রিংকস কিডনির জন্য মারাত্মক ক্ষতিকর।", icon: "fa-wine-bottle" },
+            { id: 31, title: "ক্যালসিয়াম", text: " হাড় মজবুত রাখতে নিয়মিত দুধ বা দই খান।", icon: "fa-cheese" },
+            { id: 32, title: "বই পড়া", text: "বই পড়লে মানসিক চাপ কমে ও স্মৃতিশক্তি বাড়ে।", icon: "fa-book" },
+            { id: 33, title: "পারিবারিক সময়", text: "পরিবারের সাথে সময় কাটানো মানসিক স্বাস্থ্যের জন্য ভালো।", icon: "fa-users" },
+            { id: 34, title: "হেডফোন", text: "উচ্চ শব্দে হেডফোন ব্যবহার কানের ক্ষতি করে।", icon: "fa-headphones" },
+            { id: 35, title: "বাগান করা", text: "বাগান করা মনের জন্য একটি ভালো থেরাপি।", icon: "fa-tree" },
+            { id: 36, title: "কাজের বিরতি", text: "একনাগাড়ে কাজ না করে মাঝে ৫ মিনিটের ব্রেক নিন।", icon: "fa-hourglass-half" },
+            { id: 37, title: "তেল পরিবর্তন", text: "একই তেল বারবার ভাজার কাজে ব্যবহার করবেন না।", icon: "fa-oil-can" },
+            { id: 38, title: "গভীর শ্বাস", text: "দিনে কয়েকবার গভীর শ্বাস-প্রশ্বাসের ব্যায়াম করুন।", icon: "fa-lungs" },
+            { id: 39, title: "কৃতজ্ঞতা", text: "যা কিছু আছে তার জন্য সৃষ্টিকর্তার প্রতি কৃতজ্ঞ থাকুন।", icon: "fa-pray" },
+            { id: 40, title: "হাসিখুশি", text: "হাসি রোগ প্রতিরোধ ক্ষমতা বাড়াতে সাহায্য করে।", icon: "fa-smile" },
+
+             // Page 3 (41-60) - Demo Content for testing Next Button logic
+            { id: 41, title: "মাথাব্যথা", text: "ঘন ঘন মাথাব্যথা হলে প্রচুর পানি পান করুন ও বিশ্রাম নিন।", icon: "fa-head-side-virus" },
+            { id: 42, title: "ডায়াবেটিস চেক", text: "ত্রিশোর্ধ্ব হলে নিয়মিত ব্লাড সুগার চেক করুন।", icon: "fa-notes-medical" },
+            { id: 43, title: "সানস্ক্রিন", text: "রোদে বের হলে ত্বকে সানস্ক্রিন ব্যবহার করুন।", icon: "fa-sun" },
+            { id: 44, title: "সাঁতার", text: "সাঁতার পুরো শরীরের জন্য সেরা ব্যায়াম।", icon: "fa-swimmer" },
+            { id: 45, title: "আঁশযুক্ত খাবার", text: "লাল চাল ও আটা হজম শক্তি বৃদ্ধি করে।", icon: "fa-bread-slice" },
+            { id: 46, title: "রক্তদান", text: "সুস্থ থাকলে ৪ মাস পর পর রক্তদান করুন।", icon: "fa-hand-holding-heart" },
+            { id: 47, title: "ঘাড়ের ব্যায়াম", text: "মোবাইল দেখার সময় ঘাড় নিচু করে রাখবেন না।", icon: "fa-user-injured" },
+            { id: 48, title: "মধু", text: "কাশি হলে কুসুম গরম পানিতে মধু মিশিয়ে খান।", icon: "fa-jar" },
+            { id: 49, title: "গ্রিন টি", text: "দুধ চায়ের বদলে গ্রিন টি অ্যান্টি-অক্সিডেন্টের ভালো উৎস।", icon: "fa-leaf" },
+            { id: 50, title: "শব্দ দূষণ", text: "অতিরিক্ত শব্দ থেকে দূরে থাকুন, কানের ক্ষতি এড়ান।", icon: "fa-volume-mute" },
+            { id: 51, title: "সাইক্লিং", text: "সাইকেল চালানো হার্ট ও পায়ের পেশীর জন্য ভালো।", icon: "fa-bicycle" },
+            { id: 52, title: "ফ্রিজের খাবার", text: "ফ্রিজের খাবার গরম না করে খাবেন না।", icon: "fa-temperature-low" },
+            { id: 53, title: "মশা থেকে সাবধান", text: "ডেঙ্গু রোধে দিনে ও রাতে মশারি ব্যবহার করুন।", icon: "fa-bug" },
+            { id: 54, title: "ঔষধ", text: "ডাক্তারের পরামর্শ ছাড়া অ্যান্টিবায়োটিক খাবেন না।", icon: "fa-pills" },
+            { id: 55, title: "চোখের ড্রপ", text: "ডাক্তারের পরামর্শ ছাড়া চোখে কোনো ড্রপ দিবেন না।", icon: "fa-eye-dropper" },
+            { id: 56, title: "বাসি খাবার", text: "বাসি বা পচা খাবার ফুড পয়জনিং এর কারণ।", icon: "fa-trash" },
+            { id: 57, title: "শিশুর যত্ন", text: "শিশুদের নিয়মিত টিকা দেওয়া নিশ্চিত করুন।", icon: "fa-baby" },
+            { id: 58, title: "ঘাম মুছুন", text: "ব্যায়ামের পর ভেজা কাপড়ে বেশিক্ষণ থাকবেন না।", icon: "fa-tshirt" },
+            { id: 59, title: "দুপুরের ঘুম", text: "দুপুরে ২০ মিনিটের পাওয়ার ন্যাপ কাজের গতি বাড়ায়।", icon: "fa-stopwatch" },
+            { id: 60, title: "নিয়মিত চেকআপ", text: "বছরে অন্তত একবার ফুল বডি চেকআপ করান।", icon: "fa-stethoscope" }
+        ];
+
+        // কনফিগারেশন
+        const itemsPerPage = 20;
+        let currentPage = 1;
+
+        // পেজ লোড ফাংশন
+        function loadTips(page) {
+            const container = document.getElementById('tipsContainer');
+            container.innerHTML = ''; // আগের কন্টেন্ট পরিষ্কার করা
+
+            // শুরু এবং শেষের ইনডেক্স বের করা
+            const startIndex = (page - 1) * itemsPerPage;
+            const endIndex = startIndex + itemsPerPage;
+            
+            // ডাটা স্লাইস করা
+            const currentTips = tipsData.slice(startIndex, endIndex);
+
+            // কার্ড জেনারেট করা
+            currentTips.forEach(tip => {
+                const cardHTML = `
+                    <div class="col-md-6 col-lg-4 fade-in">
+                        <div class="tip-card">
+                            <button class="btn-share" onclick="shareTip('${tip.title}', '${tip.text}')" title="শেয়ার করুন">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            <div class="icon-box">
+                                <i class="fas ${tip.icon}"></i>
+                            </div>
+                            <div class="tip-title">${tip.title}</div>
+                            <p class="tip-text">${tip.text}</p>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHTML;
+            });
+
+            updateButtons();
+        }
+
+        // বাটন ও পেজ নম্বর আপডেট করা
+        function updateButtons() {
+            const totalPages = Math.ceil(tipsData.length / itemsPerPage);
+            
+            // টেক্সট আপডেট
+            document.getElementById('currentPageNum').innerText = currentPage;
+            document.getElementById('totalPagesNum').innerText = totalPages;
+
+            // বাটন এনাবল/ডিজেবল লজিক
+            document.getElementById('prevBtn').disabled = (currentPage === 1);
+            document.getElementById('nextBtn').disabled = (currentPage === totalPages);
+        }
+
+        // পেজ পরিবর্তনের ফাংশন
+        function changePage(direction) {
+            currentPage += direction;
+            loadTips(currentPage);
+            // পেজ চেঞ্জ হলে উপরে স্ক্রল করবে
+            document.getElementById('tipsContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // শেয়ার ফাংশন (Web Share API)
+        function shareTip(title, text) {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ইনসাফ মেডিকেল হেলথ টিপস',
+                    text: `${title}: ${text}`,
+                    url: window.location.href
+                })
+                .catch((error) => console.log('Error sharing', error));
+            } else {
+                // পিসির জন্য বা যাদের শেয়ার API নেই
+                alert('টিপসটি ক্লিপবোর্ডে কপি করা হয়েছে: ' + title);
+                navigator.clipboard.writeText(`${title}: ${text} - ইনসাফ মেডিকেল`);
+            }
+        }
+
+        // শুরুতে প্রথম পেজ লোড হবে
+        window.onload = function() {
+            loadTips(1);
+        };
+    </script>
+</body>
+</html>
