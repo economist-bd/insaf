@@ -25,14 +25,14 @@
         }
         .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
         .doc-img-container {
-            height: 200px;
+            height: 220px;
             background-color: #e0f2f1;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
         }
-        .doc-img { width: 100%; height: 100%; object-fit: cover; }
+        .doc-img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
         .dept-badge {
             background-color: var(--primary-color);
             color: white;
@@ -85,22 +85,73 @@
     </footer>
 
     <script>
-        // ৫০ জন ডাক্তারের ডামি ডাটা জেনারেটর
-        const departments = ['Cardiology', 'Neuroscience', 'Orthopedics', 'Gynecology'];
-        const doctors = [];
+        // ছবির সোর্স (ডেমো লিংক)
+        const imgMale1 = 'https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg';
+        const imgMale2 = 'https://img.freepik.com/free-photo/portrait-successful-mid-adult-doctor-with-crossed-arms_1262-12865.jpg';
+        const imgMale3 = 'https://img.freepik.com/free-photo/portrait-smiling-handsome-male-doctor-man_171337-5055.jpg';
+        const imgFemale1 = 'https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg';
+        const imgFemale2 = 'https://img.freepik.com/free-photo/female-doctor-hospital-with-stethoscope_23-2148827776.jpg';
 
-        // অটোমেটিক ৫০ জন ডাক্তার তৈরি করা হচ্ছে (আপনি চাইলে নাম এডিট করতে পারবেন)
-        for (let i = 1; i <= 50; i++) {
-            const randomDept = departments[Math.floor(Math.random() * departments.length)];
-            doctors.push({
-                id: i,
-                name: `ডাঃরফিক চৌধুরী ${i}`, // উদাহরণ নাম
-                degree: 'MBBS, FCPS, MD (USA)',
-                dept: randomDept,
-                phone: `+৮৮০ ১৭১১-০০${100 + i}`, // ডামি নম্বর
-                image: 'https://img.freepik.com/free-photo/doctor-with-his-arms-crossed-white-background_1368-5790.jpg' // ডামি ছবি
-            });
-        }
+        // ৫০ জন বিশেষজ্ঞ ডাক্তারের ম্যানুয়াল ডাটাবেজ
+        const doctors = [
+            // --- Cardiology (13 Doctors) ---
+            { id: 1, name: 'অধ্যাপক ডা. আব্দুল্লাহ আল মামুন', degree: 'MBBS, FCPS (Medicine), MD (Cardiology)', dept: 'Cardiology', phone: '01711-234567', image: imgMale1 },
+            { id: 2, name: 'ডা. ফাতেমা বেগম', degree: 'MBBS, D-Card (DU), FCPS', dept: 'Cardiology', phone: '01819-876543', image: imgFemale1 },
+            { id: 3, name: 'অধ্যাপক ডা. মোনাব্বির হোসেন', degree: 'MBBS, MD (Cardiology), FRCP (Edin)', dept: 'Cardiology', phone: '01912-345678', image: imgMale2 },
+            { id: 4, name: 'ডা. সুফিয়া রহমান', degree: 'MBBS, FCPS (Cardiology)', dept: 'Cardiology', phone: '01611-112233', image: imgFemale2 },
+            { id: 5, name: 'ডা. আরমান মালিক', degree: 'MBBS, MRCP (UK), MD (USA)', dept: 'Cardiology', phone: '01712-998877', image: imgMale3 },
+            { id: 6, name: 'ডা. কে. এম. এহসান', degree: 'MBBS, D-Card, MACP (USA)', dept: 'Cardiology', phone: '01552-445566', image: imgMale1 },
+            { id: 7, name: 'ডা. লতিফা শামস', degree: 'MBBS, FCPS, MD (Card)', dept: 'Cardiology', phone: '01300-123456', image: imgFemale1 },
+            { id: 8, name: 'অধ্যাপক ডা. হারুন অর রশিদ', degree: 'MBBS, PhD (Cardiology)', dept: 'Cardiology', phone: '01811-223344', image: imgMale2 },
+            { id: 9, name: 'ডা. সাইদুর রহমান', degree: 'MBBS, MD (Interventional Cardiology)', dept: 'Cardiology', phone: '01777-889900', image: imgMale3 },
+            { id: 10, name: 'ডা. নাজনীন আক্তার', degree: 'MBBS, D-Card (NICVD)', dept: 'Cardiology', phone: '01999-556677', image: imgFemale2 },
+            { id: 11, name: 'ডা. রিয়াজ আহমেদ', degree: 'MBBS, FCPS, FRCP', dept: 'Cardiology', phone: '01678-901234', image: imgMale1 },
+            { id: 12, name: 'ডা. তৌফিক এলাহী', degree: 'MBBS, MD (Cardiology)', dept: 'Cardiology', phone: '01700-112299', image: imgMale2 },
+            { id: 13, name: 'ডা. শামীম হায়দার', degree: 'MBBS, FCPS (Cardio)', dept: 'Cardiology', phone: '01888-223344', image: imgMale3 },
+
+            // --- Neuroscience (12 Doctors) ---
+            { id: 14, name: 'অধ্যাপক ডা. কাজী দীন মোহাম্মদ', degree: 'MBBS, FCPS (Neuro), MD', dept: 'Neuroscience', phone: '01711-556677', image: imgMale2 },
+            { id: 15, name: 'ডা. কনক কান্তি বড়ুয়া', degree: 'MBBS, PhD (Neurosurgery)', dept: 'Neuroscience', phone: '01511-223344', image: imgMale1 },
+            { id: 16, name: 'ডা. নার্গিস সুলতানা', degree: 'MBBS, FCPS (Neurology)', dept: 'Neuroscience', phone: '01911-334455', image: imgFemale1 },
+            { id: 17, name: 'ডা. আহসান হাবিব', degree: 'MBBS, MD (Neurology)', dept: 'Neuroscience', phone: '01812-778899', image: imgMale3 },
+            { id: 18, name: 'ডা. মালিহা পারভীন', degree: 'MBBS, MS (Neurosurgery)', dept: 'Neuroscience', phone: '01611-998877', image: imgFemale2 },
+            { id: 19, name: 'ডা. ফিরোজ আহমেদ', degree: 'MBBS, FCPS, FRCP (Glasgow)', dept: 'Neuroscience', phone: '01722-334455', image: imgMale1 },
+            { id: 20, name: 'ডা. জহিরুল ইসলাম', degree: 'MBBS, PhD (Japan)', dept: 'Neuroscience', phone: '01999-001122', image: imgMale2 },
+            { id: 21, name: 'ডা. শারমিন জাহান', degree: 'MBBS, MD (Neuro)', dept: 'Neuroscience', phone: '01333-445566', image: imgFemale1 },
+            { id: 22, name: 'ডা. উত্তম কুমার', degree: 'MBBS, FCPS (Neuro)', dept: 'Neuroscience', phone: '01744-556677', image: imgMale3 },
+            { id: 23, name: 'ডা. বদরুল আলম', degree: 'MBBS, MD (Neurology)', dept: 'Neuroscience', phone: '01855-667788', image: imgMale1 },
+            { id: 24, name: 'ডা. আয়েশা সিদ্দিকা', degree: 'MBBS, FCPS', dept: 'Neuroscience', phone: '01566-778899', image: imgFemale2 },
+            { id: 25, name: 'ডা. সিরাজুল ইসলাম', degree: 'MBBS, MS (Neuro)', dept: 'Neuroscience', phone: '01677-889900', image: imgMale2 },
+
+            // --- Orthopedics (13 Doctors) ---
+            { id: 26, name: 'অধ্যাপক ডা. আর আর কৈরী', degree: 'MBBS, MS (Ortho), FACS (USA)', dept: 'Orthopedics', phone: '01711-990011', image: imgMale3 },
+            { id: 27, name: 'ডা. আমজাদ হোসেন', degree: 'MBBS, MS (Ortho Surgery)', dept: 'Orthopedics', phone: '01811-889900', image: imgMale1 },
+            { id: 28, name: 'ডা. সামান্তা লাল সেন', degree: 'MBBS, FCPS (Surgery)', dept: 'Orthopedics', phone: '01911-778899', image: imgMale2 },
+            { id: 29, name: 'ডা. কামরুল হাসান', degree: 'MBBS, D-Ortho', dept: 'Orthopedics', phone: '01611-667788', image: imgMale3 },
+            { id: 30, name: 'ডা. মশিউর রহমান', degree: 'MBBS, MS (Trauma)', dept: 'Orthopedics', phone: '01511-556677', image: imgMale1 },
+            { id: 31, name: 'ডা. ওয়াহিদুজ্জামান', degree: 'MBBS, AO Fellow (Germany)', dept: 'Orthopedics', phone: '01311-445566', image: imgMale2 },
+            { id: 32, name: 'ডা. শাহিনুর রহমান', degree: 'MBBS, MS (Ortho)', dept: 'Orthopedics', phone: '01722-332211', image: imgMale3 },
+            { id: 33, name: 'ডা. রফিকুল ইসলাম', degree: 'MBBS, FCPS (Ortho)', dept: 'Orthopedics', phone: '01833-221100', image: imgMale1 },
+            { id: 34, name: 'ডা. মো. ইদ্রিস আলী', degree: 'MBBS, D-Ortho, MS', dept: 'Orthopedics', phone: '01944-110099', image: imgMale2 },
+            { id: 35, name: 'ডা. জাহাঙ্গীর আলম', degree: 'MBBS, MS (Spine Surgery)', dept: 'Orthopedics', phone: '01655-009988', image: imgMale3 },
+            { id: 36, name: 'ডা. সালাউদ্দিন আহমেদ', degree: 'MBBS, FRCS (Edin)', dept: 'Orthopedics', phone: '01566-998877', image: imgMale1 },
+            { id: 37, name: 'ডা. আবুল কালাম', degree: 'MBBS, MS (Ortho)', dept: 'Orthopedics', phone: '01777-887766', image: imgMale2 },
+            { id: 38, name: 'ডা. তানভীর আহমেদ', degree: 'MBBS, FCPS', dept: 'Orthopedics', phone: '01888-776655', image: imgMale3 },
+
+            // --- Gynecology (12 Doctors) ---
+            { id: 39, name: 'অধ্যাপক ডা. রওশন আরা বেগম', degree: 'MBBS, FCPS (Gynae & Obs)', dept: 'Gynecology', phone: '01711-123456', image: imgFemale1 },
+            { id: 40, name: 'ডা. টি এ চৌধুরী', degree: 'MBBS, FRCS, FRCOG (UK)', dept: 'Gynecology', phone: '01811-234567', image: imgMale1 },
+            { id: 41, name: 'ডা. ফেরদৌসি বেগম', degree: 'MBBS, MS (Gynae)', dept: 'Gynecology', phone: '01911-345678', image: imgFemale2 },
+            { id: 42, name: 'ডা. কানিজ ফাতেমা', degree: 'MBBS, FCPS, MCPS', dept: 'Gynecology', phone: '01611-456789', image: imgFemale1 },
+            { id: 43, name: 'ডা. রাশিদা খানম', degree: 'MBBS, DGO, MCPS', dept: 'Gynecology', phone: '01511-567890', image: imgFemale2 },
+            { id: 44, name: 'ডা. সাবেরা খাতুন', degree: 'MBBS, FCPS (Gynae)', dept: 'Gynecology', phone: '01722-678901', image: imgFemale1 },
+            { id: 45, name: 'ডা. নুসরাত জামান', degree: 'MBBS, MS (Obs & Gynae)', dept: 'Gynecology', phone: '01833-789012', image: imgFemale2 },
+            { id: 46, name: 'ডা. তাহমিনা বানু', degree: 'MBBS, FCPS', dept: 'Gynecology', phone: '01944-890123', image: imgFemale1 },
+            { id: 47, name: 'ডা. শাহানা পারভীন', degree: 'MBBS, DGO', dept: 'Gynecology', phone: '01655-901234', image: imgFemale2 },
+            { id: 48, name: 'ডা. ফারহানা হক', degree: 'MBBS, FCPS (Gynae)', dept: 'Gynecology', phone: '01566-012345', image: imgFemale1 },
+            { id: 49, name: 'ডা. রেহানা আক্তার', degree: 'MBBS, MS (Gynae)', dept: 'Gynecology', phone: '01777-123450', image: imgFemale2 },
+            { id: 50, name: 'ডা. সালমা সুলতানা', degree: 'MBBS, FCPS', dept: 'Gynecology', phone: '01888-234560', image: imgFemale1 }
+        ];
 
         // ডাক্তারদের কার্ড তৈরি করার ফাংশন
         function displayDoctors(data) {
@@ -109,15 +160,15 @@
 
             data.forEach(doc => {
                 const card = `
-                    <div class="col-md-3 col-sm-6">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
                         <div class="doctor-card text-center">
                             <div class="doc-img-container">
                                 <img src="${doc.image}" class="doc-img" alt="${doc.name}">
                             </div>
                             <div class="p-3">
                                 <span class="dept-badge">${doc.dept}</span>
-                                <h5 class="fw-bold mb-1">${doc.name}</h5>
-                                <p class="text-muted small mb-2">${doc.degree}</p>
+                                <h5 class="fw-bold mb-1" style="font-size: 1.1rem;">${doc.name}</h5>
+                                <p class="text-muted small mb-2 text-truncate" title="${doc.degree}">${doc.degree}</p>
                                 <hr class="my-2">
                                 <p class="fw-bold text-success mb-2"><i class="fas fa-phone-alt"></i> ${doc.phone}</p>
                                 <a href="tel:${doc.phone}" class="btn btn-sm btn-call">অ্যাপয়েন্টমেন্ট নিন</a>
@@ -131,6 +182,20 @@
 
         // ফিল্টার ফাংশন
         function filterDoctors(category) {
+            // বাটনগুলোর কালার চেঞ্জ করার লজিক
+            const buttons = document.querySelectorAll('#filterButtons button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active-filter', 'btn-light', 'text-dark');
+                btn.classList.add('btn-outline-light');
+            });
+            
+            // যে বাটনে ক্লিক করা হয়েছে সেটা হাইলাইট হবে
+            const activeBtn = event ? event.target : document.querySelector('button[onclick="filterDoctors(\'all\')"]');
+            if(activeBtn) {
+                activeBtn.classList.remove('btn-outline-light');
+                activeBtn.classList.add('btn-light', 'text-dark', 'active-filter');
+            }
+
             if (category === 'all') {
                 displayDoctors(doctors);
             } else {
@@ -139,13 +204,20 @@
             }
         }
 
-        // পেজ লোড হলে URL চেক করবে (হোম পেজ থেকে লিংকে ক্লিক করলে কাজ করার জন্য)
+        // পেজ লোড হলে URL চেক করবে
         window.onload = function() {
             const urlParams = new URLSearchParams(window.location.search);
             const deptParam = urlParams.get('dept');
             
             if(deptParam) {
-                filterDoctors(deptParam);
+                // ফিল্টার বাটন অটোমেটিক সিলেক্ট করার জন্য ছোট ফিক্স
+                const targetBtn = document.querySelector(`button[onclick="filterDoctors('${deptParam}')"]`);
+                if(targetBtn) {
+                    // ম্যানুয়ালি ক্লিক ইভেন্ট ট্রিগার করা
+                    targetBtn.click();
+                } else {
+                    filterDoctors(deptParam);
+                }
             } else {
                 displayDoctors(doctors);
             }
